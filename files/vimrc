@@ -1,3 +1,10 @@
+" Setting up Vundle, vim plugin manager
+let plug_executable=expand('~/.vim/autoload/plug.vim')
+if !filereadable(plug_executable)
+    echo "Installing plug"
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -17,6 +24,14 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'nanotech/jellybeans.vim'
 call plug#end()
+
+" Install plugins in the background
+let plugins_dir=expand('~/.vim/plugged')
+if !isdirectory(plugins_dir)
+    echo "Installing plugins, reloading vim"
+    silent PlugInstall
+    silent source $HOME/.vimrc
+endif
 
 set nocompatible
 
