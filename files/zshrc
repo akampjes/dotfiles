@@ -1,17 +1,33 @@
 source ~/.antigen.zsh
 
+antigen-fbundle() {
+  local loc=$1
+  local url=${2:-$ANTIGEN_DEFAULT_REPO_URL}
+  local make_local_clone=${3:-true}
+  local btype=${4:-plugin}
+  if $make_local_clone; then
+    -antigen-ensure-repo $url
+  fi
+
+  _ANTIGEN_BUNDLE_RECORD="$_ANTIGEN_BUNDLE_RECORD\n$url $loc $btype"
+  _ANTIGEN_BUNDLE_RECORD="$_ANTIGEN_BUNDLE_RECORD $make_local_clone"
+
+  -antigen-load "$url" "$loc" "$make_local_clone"
+}
+
+
 antigen use oh-my-zsh
 
-antigen bundle git
-antigen bundle bundler
-antigen bundle gem
-antigen bundle brew
-antigen bundle rbenv
-antigen bundle rails
-antigen bundle vi-mode
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen-fbundle plugins/git
+antigen-fbundle plugins/bundler
+antigen-fbundle plugins/gem
+antigen-fbundle plugins/brew
+antigen-fbundle plugins/rbenv
+antigen-fbundle plugins/rails
+antigen-fbundle plugins/vi-mode
+antigen-fbundle / https://github.com/zsh-users/zsh-syntax-highlighting.git
 
-antigen theme robbyrussell
+antigen-fbundle themes/robbyrussell.zsh-theme
 
 antigen apply
 
