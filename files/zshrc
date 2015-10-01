@@ -1,7 +1,19 @@
 source ~/.antigen.zsh
 
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/akampjes/.oh-my-zsh
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle bundler
+antigen bundle gem
+antigen bundle brew
+antigen bundle rbenv
+antigen bundle rails
+antigen bundle vi-mode
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen theme robbyrussell
+
+antigen apply
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -46,12 +58,6 @@ ZSH_THEME="robbyrussell"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler gem brew rbenv rails vi-mode)
 
 # User configuration
 
