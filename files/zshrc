@@ -25,6 +25,7 @@ antigen-fbundle plugins/brew
 antigen-fbundle plugins/rbenv
 antigen-fbundle plugins/rails
 antigen-fbundle plugins/vi-mode
+antigen-fbundle plugins/command-not-found
 antigen-fbundle / https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 antigen-fbundle themes/robbyrussell.zsh-theme
