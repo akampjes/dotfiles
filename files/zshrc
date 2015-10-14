@@ -107,6 +107,7 @@ export PATH="/Users/akampjes/.rbenv/shims:/Users/akampjes/.bin:/usr/local/bin:/u
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias testshit="rspec && say success || say failure"
 alias gau="git add -u"
+alias gdc="git diff --cached"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
