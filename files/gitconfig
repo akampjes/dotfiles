@@ -1,0 +1,18 @@
+[user]
+	email = a.kampjes@gmail.com
+	name = Andrew Kampjes
+[alias]
+  st = status
+  co = checkout
+  glog = log --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
+[sendemail]
+  smtpserver = smtp.gmail.com
+  smtpuser = a.kampjes@gmail.com
+  smtpencryption = tls
+  chainreplyto = false
+  smtpserverport = 587
+[push]
+	default = simple
+[core]
+	editor = /usr/local/bin/vim
+	excludesfile = /Users/otter/.gitignore_global
