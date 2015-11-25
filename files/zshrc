@@ -108,8 +108,11 @@ export PATH="/Users/akampjes/.rbenv/shims:/Users/akampjes/.bin:/usr/local/bin:/u
 alias testshit="rspec && say success || say failure"
 alias gau="git add -u"
 alias gdc="git diff --cached"
+alias NZ='PS_MARKET=nz'
+alias AU='PS_MARKET=au'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+eval "$(rbenv init -)"
