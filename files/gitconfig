@@ -15,4 +15,4 @@
 	default = simple
 [core]
 	editor = /usr/local/bin/vim
-	excludesfile = /Users/otter/.gitignore_global
+	excludesfile = ~/.gitignore_global
