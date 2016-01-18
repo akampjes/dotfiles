@@ -14,6 +14,7 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'thoughtbot/vim-rspec'
 
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Fuzzymatch file loading thing
@@ -26,6 +27,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
+" Use PlugInstall to install these plugins
 " Install plugins in the background
 let plugins_dir=expand('~/.vim/plugged')
 if !isdirectory(plugins_dir)
