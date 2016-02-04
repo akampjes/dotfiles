@@ -108,6 +108,7 @@ export PATH="/Users/akampjes/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 alias testshit="rspec && say success || say failure"
 alias gau="git add -u"
 alias gdc="git diff --cached"
+alias gpf="git push --force-with-lease"
 alias log-with-branches='git log --reverse -100 --format="format:%Cgreen[BRANCHNAME %h]%Creset %s" | (sed "s/BRANCHNAME/$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)/")'
 alias nz='PS_MARKET=nz'
 alias au='PS_MARKET=au'
