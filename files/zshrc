@@ -128,3 +128,5 @@ fi
 if hash thefuck 2>/dev/null; then
   eval "$(thefuck --alias)"
 fi
+
+export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
