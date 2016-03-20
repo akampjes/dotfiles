@@ -136,3 +136,5 @@ let g:netrw_liststyle=3
 noremap <c-p> :FZF<CR>
 
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd FileType gitcommit setlocal spell
