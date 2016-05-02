@@ -147,4 +147,9 @@ tellme () {
   return $result
 }
 
+gitlog ()
+{
+  git log master.. --format="%Cgreen[$(git symbolic-ref --short HEAD) %C(bold blue)%h]%C(green)%ar %C(bold blue)%an %Creset%s" --no-merges --reverse
+}
+
 export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
