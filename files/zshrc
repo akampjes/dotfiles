@@ -135,4 +135,16 @@ if hash thefuck 2>/dev/null; then
   eval "$(thefuck --alias)"
 fi
 
+tellme () {
+  "$@"
+  local result=$?
+  if [ $result -ne 0 ]
+  then
+    say "Failure"
+  else
+    say "Success"
+  fi
+  return $result
+}
+
 export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
