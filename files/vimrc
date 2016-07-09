@@ -138,3 +138,9 @@ noremap <c-p> :FZF<CR>
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
+
+" Leader
+let mapleader = " "
+
+" EG.
+"nnoremap <leader>d dd
