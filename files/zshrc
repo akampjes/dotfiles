@@ -28,8 +28,8 @@ antigen-fbundle plugins/vi-mode
 antigen-fbundle plugins/command-not-found
 antigen-fbundle / https://github.com/zsh-users/zsh-syntax-highlighting.git
 
-#antigen-fbundle themes/robbyrussell.zsh-theme
-antigen-fbundle themes/agnoster.zsh-theme
+antigen-fbundle themes/robbyrussell.zsh-theme
+#antigen-fbundle themes/agnoster.zsh-theme
 
 antigen apply
 
@@ -37,8 +37,8 @@ antigen apply
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
 DEFAULT_USER="otter"
 
 # Uncomment the following line to use case-sensitive completion.
