@@ -121,7 +121,14 @@ alias nz='PS_MARKET=nz'
 alias au='PS_MARKET=au'
 alias uk='PS_MARKET=uk'
 
+# Get the current powershop release number
+alias release="ssh nz-prod-app-wlg-d7 'cat /apps/nz-prod-app/current/TAG' 2>/dev/null"
+# Get the current major release number.
+alias major="release | sed -E 's/([0-9]+)\.[0-9]+/\1/g'"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
@@ -153,4 +160,26 @@ gitlog ()
   git log master.. --format="%Cgreen[$(git symbolic-ref --short HEAD) %C(bold blue)%h]%C(green)%ar %C(bold blue)%an %Creset%s" --no-merges --reverse
 }
 
-export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
+# Check the datacenter for a specific environment.
+function dc_environment {
+  NAME=$1
+  BASE_URL=$2
+  case `resolveip -s $BASE_URL` in
+    `resolveip -s akl.$BASE_URL`)
+      ACTIVE_DC="Auckland"
+      ;;
+    `resolveip -s wlg.$BASE_URL`)
+      ACTIVE_DC="Wellington"
+      ;;
+    *)
+      echo "Unknown datacenter" 1>&2
+      ;;
+  esac
+  echo "$NAME: $ACTIVE_DC is active"
+}
+# Check the datacenters for a bunch of environments.
+function dc {
+  dc_environment Prod secure.powershop.co.nz
+  dc_environment QA qa.test.powershop.co.nz
+  dc_environment Stable stable.test.powershop.co.nz
+}
