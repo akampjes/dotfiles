@@ -121,6 +121,8 @@ alias nz='PS_MARKET=nz'
 alias au='PS_MARKET=au'
 alias uk='PS_MARKET=uk'
 
+alias tunnel='TUNNEL=1'
+
 # Get the current powershop release number
 alias release="ssh nz-prod-app-wlg-d7 'cat /apps/nz-prod-app/current/TAG' 2>/dev/null"
 # Get the current major release number.
@@ -177,6 +179,7 @@ function dc_environment {
   esac
   echo "$NAME: $ACTIVE_DC is active"
 }
+
 # Check the datacenters for a bunch of environments.
 function dc {
   dc_environment Prod secure.powershop.co.nz
