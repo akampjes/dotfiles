@@ -53,6 +53,9 @@ values."
      ruby-on-rails
      javascript
      git
+     (version-control :variables
+                       version-control-diff-side 'left
+                       version-control-global-margin t)
      markdown
      ;; org
      ;; (shell :variables
@@ -61,7 +64,6 @@ values."
      ;; spell-checking
      syntax-checking
      gtags
-     ;; version-control
      react
      )
    ;; List of additional packages that will be installed without being
