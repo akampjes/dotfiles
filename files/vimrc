@@ -18,13 +18,18 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Fuzzymatch file loading thing
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 
 " Use ctrl+direction to switch windows
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'nanotech/jellybeans.vim'
 Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'osyo-manga/vim-over'
 call plug#end()
 
 " Use PlugInstall to install these plugins
@@ -37,6 +42,9 @@ if !isdirectory(plugins_dir)
 endif
 
 set nocompatible
+
+" Leader
+let mapleader = " "
 
 set modeline
 set modelines=5
@@ -92,7 +100,7 @@ vnoremap <tab> %
 
 set wrap
 
-set viminfo='10,\"100,:20,%,n~/.viminfo
+"set viminfo='10,\"100,:20,%,n~/.viminfo
 
 function! ResCur()
   if line("'\"") <= line("$")
@@ -133,14 +141,14 @@ set splitbelow
 "Now I can use :E to go explorer mode, no nerdtree required
 let g:netrw_liststyle=3
 
+set rtp+=/usr/local/opt/fzf
 noremap <c-p> :FZF<CR>
+noremap <leader>t :Tags<CR>
+"let $FZF_DEFAULT_COMMAND = 'ag --ignore ".git/*" --hidden -l -g ""'
+noremap <leader>p :Ag<CR>
 
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
-
-" Leader
-let mapleader = " "
-
 " EG.
 "nnoremap <leader>d dd
