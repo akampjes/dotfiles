@@ -1,3 +1,9 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+#export ZSH=/Users/akampjes/.oh-my-zsh
+
 source ~/.antigen.zsh
 
 antigen-fbundle() {
@@ -33,13 +39,19 @@ antigen-fbundle themes/robbyrussell.zsh-theme
 
 antigen apply
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
 DEFAULT_USER="otter"
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -79,9 +91,18 @@ DEFAULT_USER="otter"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+#plugins=(
+#  git
+#)
+#
+#source $ZSH/oh-my-zsh.sh
+
 # User configuration
 
-export PATH="/Users/akampjes/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -98,7 +119,7 @@ export PATH="/Users/akampjes/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -108,95 +129,40 @@ export PATH="/Users/akampjes/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias testshit="rspec && say success || say failure"
+#
+#
+
+source ~/.iterm2_shell_integration.zsh
+
+eval "$(rbenv init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias gau="git add -u"
 alias gdc="git diff --cached"
 alias gpf="git push --force-with-lease"
 alias gg="git grep"
 alias log-with-branches='git log --reverse -100 --format="format:%Cgreen[BRANCHNAME %h]%Creset %s" | (sed "s/BRANCHNAME/$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)/")'
 alias log-all-with-branches='git log --reverse --format="format:%Cgreen[BRANCHNAME %h]%Creset %s" | (sed "s/BRANCHNAME/$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)/")'
-alias review='open "https://git.fluxfederation.com/powerapps/powershop/compare/master...$(git symbolic-ref --short HEAD)"'
-alias beetil='open "https://desk.gotoassist.com/goto?q=$(git symbolic-ref --short HEAD | cut -c 3-)"'
-alias nz='PS_MARKET=nz'
-alias au='PS_MARKET=au'
-alias uk='PS_MARKET=uk'
 
-alias tunnel='TUNNEL=1'
-
-# Get the current powershop release number
-alias release="ssh nz-prod-app-wlg-d7 'cat /apps/nz-prod-app/current/TAG' 2>/dev/null"
-# Get the current major release number.
-alias major="release | sed -E 's/([0-9]+)\.[0-9]+/\1/g'"
-alias ps_prod='git fetch && git describe --abbrev=0 origin/current-nz-prod-app --tags'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-#export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-if hash rbenv 2>/dev/null; then
-  # Only run if rbenv is installed
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
-if hash thefuck 2>/dev/null; then
-  eval "$(thefuck --alias)"
-fi
-
-tellme () {
-  "$@"
-  local result=$?
-  if [ $result -ne 0 ]
-  then
-    say "Failure"
-  else
-    say "Success"
-  fi
-  return $result
-}
-
-gitlog ()
-{
-  git log master.. --format="%Cgreen[$(git symbolic-ref --short HEAD) %C(bold blue)%h]%C(green)%ar %C(bold blue)%an %Creset%s" --no-merges --reverse
-}
-
-# Check the datacenter for a specific environment.
-function dc_environment {
-  NAME=$1
-  BASE_URL=$2
-  case `resolveip -s $BASE_URL` in
-    `resolveip -s akl.$BASE_URL`)
-      ACTIVE_DC="Auckland"
-      ;;
-    `resolveip -s wlg.$BASE_URL`)
-      ACTIVE_DC="Wellington"
-      ;;
-    *)
-      echo "Unknown datacenter" 1>&2
-      ;;
-  esac
-  echo "$NAME: $ACTIVE_DC is active"
-}
-
-# Check the datacenters for a bunch of environments.
-function dc {
-  dc_environment Prod secure.powershop.co.nz
-  dc_environment QA qa.test.powershop.co.nz
-  dc_environment Stable stable.test.powershop.co.nz
-}
+alias vim="nvim"
+alias vimdiff='nvim -d'
+export EDITOR=nvim
 
 
-#export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/otter/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/otter/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/otter/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/otter/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/akampjes/src/lambda/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/akampjes/src/lambda/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/akampjes/src/lambda/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/akampjes/src/lambda/node_modules/tabtab/.completions/sls.zsh
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -219,3 +185,8 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+eval $(thefuck --alias)
+
+
+# added by travis gem
+[ -f /Users/akampjes/.travis/travis.sh ] && source /Users/akampjes/.travis/travis.sh
