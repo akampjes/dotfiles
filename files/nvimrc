@@ -28,6 +28,8 @@ Plug 'junegunn/fzf.vim'
 " Adds ag and ack
 Plug 'mileszs/ack.vim'
 
+Plug 'dyng/ctrlsf.vim'
+
 " Use ctrl+direction to switch windows
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -69,15 +71,18 @@ set expandtab
 "autocmd Filetype python setlocal expandtab nosmartindent
 "autocmd Filetype python setlocal expandtab nosmartindent
 autocmd Filetype html setlocal expandtab ts=2 sw=2
+"autocmd Filetype tsv setlocal noexpandtab number tabstop=20 softtabstop=20 shiftwidth=20 nowildmenu
+autocmd BufEnter *.tsv setlocal noexpandtab ts=20 sts=20 sw=20
+au BufRead,BufNewFile *.md setlocal textwidth=80
 
 syntax on
 colorscheme jellybeans
 filetype indent plugin on
 set showmatch
 
-" visual outocomplete for command menu
-set wildmenu
 
+set list
+set listchars=tab:>-
 set laststatus=2 " Always show the statusline
 set statusline=%M%h%y\ %t\ %F\ %p%%\ %l/%L\ %=[%{&ff},%{&ft}]\ [a=\%03.3b]\ [h=\%02.2B]\ [%l,%v]
 set title titlelen=150 titlestring=%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
@@ -146,9 +151,6 @@ set clipboard=unnamed
 set splitright
 set splitbelow
 
-"Now I can use :E to go explorer mode, no nerdtree required
-let g:netrw_liststyle=3
-
 set rtp+=/usr/local/opt/fzf
 noremap <c-p> :FZF<CR>
 noremap <leader>t :Tags<CR>
@@ -164,6 +166,15 @@ map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
 
 nmap ; :Buffers<CR>
+
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 autocmd BufRead,BufNewFile *.md setlocal spell
