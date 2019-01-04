@@ -115,7 +115,7 @@ alias gpf="git push --force-with-lease"
 alias gg="git grep"
 alias log-with-branches='git log --reverse -100 --format="format:%Cgreen[BRANCHNAME %h]%Creset %s" | (sed "s/BRANCHNAME/$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)/")'
 alias log-all-with-branches='git log --reverse --format="format:%Cgreen[BRANCHNAME %h]%Creset %s" | (sed "s/BRANCHNAME/$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)/")'
-alias review='open "https://git.powershop.co.nz/powerapps/powershop/compare/master...$(git symbolic-ref --short HEAD)"'
+alias review='open "https://git.fluxfederation.com/powerapps/powershop/compare/master...$(git symbolic-ref --short HEAD)"'
 alias beetil='open "https://desk.gotoassist.com/goto?q=$(git symbolic-ref --short HEAD | cut -c 3-)"'
 alias nz='PS_MARKET=nz'
 alias au='PS_MARKET=au'
@@ -127,6 +127,7 @@ alias tunnel='TUNNEL=1'
 alias release="ssh nz-prod-app-wlg-d7 'cat /apps/nz-prod-app/current/TAG' 2>/dev/null"
 # Get the current major release number.
 alias major="release | sed -E 's/([0-9]+)\.[0-9]+/\1/g'"
+alias ps_prod='git fetch && git describe --abbrev=0 origin/current-nz-prod-app --tags'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -186,6 +187,7 @@ function dc {
   dc_environment QA qa.test.powershop.co.nz
   dc_environment Stable stable.test.powershop.co.nz
 }
+
 
 #export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 
