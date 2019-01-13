@@ -1,42 +1,28 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-#export ZSH=/Users/akampjes/.oh-my-zsh
-
 source ~/.antigen.zsh
-
-antigen-fbundle() {
-  local loc=$1
-  local url=${2:-$ANTIGEN_DEFAULT_REPO_URL}
-  local make_local_clone=${3:-true}
-  local btype=${4:-plugin}
-  if $make_local_clone; then
-    -antigen-ensure-repo $url
-  fi
-
-  _ANTIGEN_BUNDLE_RECORD="$_ANTIGEN_BUNDLE_RECORD\n$url $loc $btype"
-  _ANTIGEN_BUNDLE_RECORD="$_ANTIGEN_BUNDLE_RECORD $make_local_clone"
-
-  -antigen-load "$url" "$loc" "$make_local_clone"
-}
-
 
 antigen use oh-my-zsh
 
-antigen-fbundle plugins/git
-antigen-fbundle plugins/bundler
-antigen-fbundle plugins/gem
-antigen-fbundle plugins/brew
-antigen-fbundle plugins/rbenv
-antigen-fbundle plugins/rails
-antigen-fbundle plugins/vi-mode
-antigen-fbundle plugins/command-not-found
-antigen-fbundle / https://github.com/zsh-users/zsh-syntax-highlighting.git
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle bundler
+antigen bundle gem
+antigen bundle brew
+antigen bundle rbenv
+antigen bundle rails
+antigen bundle vi-mode
+antigen bundle command-not-found
 
-antigen-fbundle themes/robbyrussell.zsh-theme
-#antigen-fbundle themes/agnoster.zsh-theme
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
 
+# Load the theme.
+antigen theme robbyrussell
+
+# Tell Antigen that you're done.
 antigen apply
 
 DEFAULT_USER="otter"
@@ -131,8 +117,6 @@ ZSH_THEME="robbyrussell"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
-
-source ~/.iterm2_shell_integration.zsh
 
 eval "$(rbenv init -)"
 
