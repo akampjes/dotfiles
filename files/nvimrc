@@ -44,12 +44,12 @@ call plug#end()
 
 " Use PlugInstall to install these plugins
 " Install plugins in the background
-let plugins_dir=expand('~/.vim/plugged')
-if !isdirectory(plugins_dir)
-    echo "Installing plugins, reloading vim"
-    silent PlugInstall
-    silent source $HOME/.vimrc
-endif
+"let plugins_dir=expand('~/.vim/plugged')
+"if !isdirectory(plugins_dir)
+"    echo "Installing plugins, reloading vim"
+"    silent PlugInstall
+"    silent source $HOME/.vimrc
+"endif
 
 set nocompatible
 
@@ -146,6 +146,7 @@ set nobackup
 
 " Use system clipboard
 set clipboard=unnamed
+set clipboard+=unnamedplus
 
 " Splits
 set splitright
