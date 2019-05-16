@@ -120,7 +120,8 @@ ZSH_THEME="robbyrussell"
 
 eval "$(rbenv init -)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/fzf/key-bindings.zsh && source /usr/share/fzf/completion.zsh
+
 
 alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
@@ -134,8 +135,6 @@ alias log-all-with-branches='git log --reverse --format="format:%Cgreen[BRANCHNA
 alias vim="nvim"
 alias vimdiff='nvim -d'
 export EDITOR=nvim
-
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -166,8 +165,8 @@ load-nvmrc() {
     nvm use default
   fi
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+#add-zsh-hook chpwd load-nvmrc
+#load-nvmrc
 
 eval $(thefuck --alias)
 
