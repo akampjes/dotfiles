@@ -1,11 +1,21 @@
-# Dotfiles
+# How it works
 
-Dis mah dotfiles that I wanna keep track of between computers.
+Config files are stored, in the `files/` directory. They may be nested within
+other directories or even hidden files, all of which will be created/symlinked
+over.
 
-## Install
+# Running
 
-`bash install.sh`
+Need ruby installed, and then
+`ruby install.rb`
 
-### Ahh what did I just do?
+# Setting up i3 + gnome
 
-I simply create symlinks in your home directory over to the files directory here.
+```shell
+sudo pacman -S adobe-source-code-pro-fonts conky rofi i3-gaps dmenu i3 picom i3blocks sensors-applet gnome-applets gnome-flashback
+```
+
+```shell
+yay -S st i3-gnome-flashback
+```
+
