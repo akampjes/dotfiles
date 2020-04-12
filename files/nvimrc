@@ -76,7 +76,7 @@ autocmd BufEnter *.tsv setlocal noexpandtab ts=20 sts=20 sw=20
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
 syntax on
-colorscheme jellybeans
+"colorscheme jellybeans
 filetype indent plugin on
 set showmatch
 

@@ -135,8 +135,6 @@ alias log-all-with-branches='git log --reverse --format="format:%Cgreen[BRANCHNA
 alias vim="nvim"
 alias vimdiff='nvim -d'
 
-unalias rg
-
 export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
@@ -148,6 +146,8 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export PATH="$PATH:/home/andrew/.dotnet/tools"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -182,3 +182,5 @@ eval $(thefuck --alias)
 
 # added by travis gem
 [ -f /Users/akampjes/.travis/travis.sh ] && source /Users/akampjes/.travis/travis.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
