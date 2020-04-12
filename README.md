@@ -19,3 +19,13 @@ sudo pacman -S adobe-source-code-pro-fonts conky rofi i3-gaps dmenu i3 picom i3b
 yay -S st i3-gnome-flashback
 ```
 
+Gnome settings which need setting:
+
+```shell
+gsettings set org.gnome.gnome-flashback desktop false
+gsettings set org.gnome.gnome-flashback root-background true
+
+# Remap default keyboard switch keybindings to avoid collision w/ i3
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift><Alt><Super>BackSpace']"
+```
