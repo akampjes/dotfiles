@@ -224,7 +224,10 @@ bindsym $mod+Shift+n exec /usr/bin/nautilus --new-window
 #bindsym $mod+Shift+p exec /usr/bin/gnome-session-quit --power-off
 
 ## Session // Lock Screen // <> Escape ##
-bindsym $mod+Escape exec gnome-screensaver-command --lock
+#bindsym $mod+Escape exec gnome-screensaver-command --lock
+bindsym $mod+Escape exec i3lock --nofork --color=000000
+
+#bindsym $mod+Shift+O exec gnome-screensaver-command --lock
 
 ## Session // Sleep // <><Shift> s ##
 bindsym $mod+Shift+s exec systemctl suspend
