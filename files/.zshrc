@@ -184,3 +184,7 @@ eval $(thefuck --alias)
 [ -f /Users/akampjes/.travis/travis.sh ] && source /Users/akampjes/.travis/travis.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+. /etc/profile.d/vte.sh
