@@ -188,3 +188,8 @@ eval $(thefuck --alias)
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 . /etc/profile.d/vte.sh
+
+if [[ $(ps --no-header --pid=$PPID --format=cmd) != "fish" ]]
+then
+  exec fish
+fi
