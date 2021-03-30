@@ -13,6 +13,8 @@ Plug 'ervandew/supertab'
 
 Plug 'elixir-editors/vim-elixir'
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'thoughtbot/vim-rspec'
