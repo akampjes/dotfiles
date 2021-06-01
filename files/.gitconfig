@@ -17,7 +17,12 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
+	pager = nvim -R -
 [merge]
 	conflictstyle = diff3
 [pull]
 	ff = only
+[pager]
+	color = false
+[diff]
+	tool = nvim -d -
