@@ -13,6 +13,7 @@
   smtpserverport = 587
 [push]
 	default = simple
+	autoSetupRemote = true
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
