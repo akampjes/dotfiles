@@ -86,7 +86,8 @@ set showmatch
 
 
 set list
-set listchars=tab:>-
+"set listchars=tab:>-
+set listchars=tab:\ \ ,nbsp:_
 set laststatus=2 " Always show the statusline
 set statusline=%M%h%y\ %t\ %F\ %p%%\ %l/%L\ %=[%{&ff},%{&ft}]\ [a=\%03.3b]\ [h=\%02.2B]\ [%l,%v]
 set title titlelen=150 titlestring=%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
